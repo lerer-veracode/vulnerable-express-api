@@ -1,0 +1,38 @@
+name: Veracode Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Package as zip file
+      run: npm run zip
+    - name: pipeline-scan action step
+      id: pipelien-scan
+      uses: veracode/Veracode-pipeline-scan-action
+      with:
+        vid: ${{ secrets.VID }}
+        vkey: ${{ secrets.VKEY }}
+        file: "package/vul-express-app.zip" 
+        #request_policy: "VeraDemo Policy"
+        debug: 1
+        fail_build: false
+    - name: Veracode Integration Helper
+      uses: veracode/github-actions-integration-helper@main
+      with:
+        action: preparePipelineResults
+        vid: ${{ secrets.VID }}
+        vkey: ${{ secrets.VKEY }}
+        appname: vul-express
+        workflow_app: false
+        pipeline_scan_flaw_filter: unmitigated_results
+        fail_checks_on_policy: true
+        line_number_slop: 3
