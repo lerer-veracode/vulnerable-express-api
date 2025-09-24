@@ -22,8 +22,7 @@ jobs:
         vid: ${{ secrets.VERACODE_API_ID }}
         vkey: ${{ secrets.VERACODE_API_KEY }}
         file: "package/vul-express-app.zip" 
-        #request_policy: "VeraDemo Policy"
-        debug: 1
+        #debug: 1
         fail_build: false
     - name: Veracode Integration Helper
       uses: veracode/github-actions-integration-helper@get-exact-app-name
@@ -31,7 +30,7 @@ jobs:
         action: preparePipelineResults
         vid: ${{ secrets.VERACODE_API_ID }}
         vkey: ${{ secrets.VERACODE_API_KEY }}
-        appname: vul-express
+        appname: vul-expres
         workflow_app: false
         pipeline_scan_flaw_filter: unmitigated_results
         fail_checks_on_policy: true
