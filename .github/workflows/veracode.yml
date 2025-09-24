@@ -17,7 +17,7 @@ jobs:
       run: npm run zip
     - name: pipeline-scan action step
       id: pipelien-scan
-      uses: veracode/Veracode-pipeline-scan-action
+      uses: veracode/Veracode-pipeline-scan-action@v1.0.19
       with:
         vid: ${{ secrets.VID }}
         vkey: ${{ secrets.VKEY }}
