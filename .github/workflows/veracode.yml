@@ -19,8 +19,8 @@ jobs:
       id: pipelien-scan
       uses: veracode/Veracode-pipeline-scan-action@v1.0.19
       with:
-        vid: ${{ secrets.VID }}
-        vkey: ${{ secrets.VKEY }}
+        vid: ${{ secrets.VERACODE_API_ID }}
+        vkey: ${{ secrets.VERACODE_API_KEY }}
         file: "package/vul-express-app.zip" 
         #request_policy: "VeraDemo Policy"
         debug: 1
@@ -29,8 +29,8 @@ jobs:
       uses: veracode/github-actions-integration-helper@main
       with:
         action: preparePipelineResults
-        vid: ${{ secrets.VID }}
-        vkey: ${{ secrets.VKEY }}
+        vid: ${{ secrets.VERACODE_API_ID }}
+        vkey: ${{ secrets.VERACODE_API_KEY }}
         appname: vul-express
         workflow_app: false
         pipeline_scan_flaw_filter: unmitigated_results
