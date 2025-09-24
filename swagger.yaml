@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: Vulnerable Express Application
+  description: A simple Node.js Express application with intentional vulnerabilities for demonstration purposes.
+  version: 1.0.0
+paths:
+  /:
+    get:
+      summary: Hello from Express!
+      description: A simple endpoint that returns "Hello from Express!".
+      responses:
+        '200':
+          description: A successful response.
+  /lookup:
+    get:
+      summary: Performs a DNS lookup
+      description: Performs a DNS lookup on the provided domain.
+      parameters:
+        - name: domain
+          in: query
+          required: true
+          description: The domain to lookup.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+        '500':
+          description: An error occurred.
+  /search:
+    get:
+      summary: Searches for a given query
+      description: Searches for a given query.
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: The search query.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+  /search-regex:
+    get:
+      summary: Matches a regular expression pattern
+      description: Matches a regular expression pattern against a text.
+      parameters:
+        - name: pattern
+          in: query
+          required: true
+          description: The regular expression pattern.
+          schema:
+            type: string
+        - name: text
+          in: query
+          required: true
+          description: The text to match against.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
