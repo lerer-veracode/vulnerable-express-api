@@ -26,7 +26,7 @@ jobs:
         debug: 1
         fail_build: false
     - name: Veracode Integration Helper
-      uses: veracode/github-actions-integration-helper@main
+      uses: veracode/github-actions-integration-helper@get-exact-app-name
       with:
         action: preparePipelineResults
         vid: ${{ secrets.VERACODE_API_ID }}
