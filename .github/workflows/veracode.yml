@@ -30,7 +30,7 @@ jobs:
         action: preparePipelineResults
         vid: ${{ secrets.VERACODE_API_ID }}
         vkey: ${{ secrets.VERACODE_API_KEY }}
-        appname: vul-expres
+        appname: vul-express-second
         workflow_app: false
         pipeline_scan_flaw_filter: unmitigated_results
         fail_checks_on_policy: true
